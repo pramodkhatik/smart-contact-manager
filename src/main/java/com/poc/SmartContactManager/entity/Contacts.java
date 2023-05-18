@@ -16,8 +16,8 @@ public class Contacts {
 	@Column(name = "cId")
 	private int cId;
 	
-	@Column(name = "firstName")
-	private String firstName; 
+	@Column(name = "Name")
+	private String name; 
 	
 	@Column(name = "secondName")
 	private String secondName;
@@ -31,16 +31,16 @@ public class Contacts {
 	@Column(name = "image")
 	private String image;
 
-	@Column(length = 500)
+	@Column(name = "description")
 	private String description;
 	
 	public Contacts(){
 		
 	}
 	
-	public Contacts(int cId, String firstName, String secondName, String work, String phone, String image, String description) {
+	public Contacts(String name, String secondName, String work, String phone, String image, String description) {
 		this.cId = cId;
-		this.firstName = firstName;
+		this.name = name;
 		this.secondName = secondName;
 		this.work = work;
 		this.phone = phone;
@@ -56,12 +56,12 @@ public class Contacts {
 		this.cId = cId;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getname() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setname(String name) {
+		this.name = name;
 	}
 
 	public String getSecondName() {
@@ -106,7 +106,7 @@ public class Contacts {
 	
 	@Override
 	public String toString() {
-		return "Contacts [cId=" + cId + ", firstName=" + firstName + ", secondName=" + secondName + ", work=" + work + ", phone=" + phone
+		return "Contacts [cId=" + cId + ", Name=" + name + ", secondName=" + secondName + ", work=" + work + ", phone=" + phone
 				+ ", image=" + image + ", description=" + description + ", ]";
 
 	}
