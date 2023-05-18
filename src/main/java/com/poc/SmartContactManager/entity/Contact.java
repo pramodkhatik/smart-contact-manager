@@ -8,15 +8,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "CONTACTS")
-public class Contacts {
+@Table(name = "CONTACT")
+public class Contact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	@Column(name = "cId")
 	private int cId;
 	
-	@Column(name = "Name")
+	@Column(name = "name")
 	private String name; 
 	
 	@Column(name = "secondName")
@@ -34,11 +34,11 @@ public class Contacts {
 	@Column(name = "description")
 	private String description;
 	
-	public Contacts(){
+	public Contact(){
 		
 	}
 	
-	public Contacts(String name, String secondName, String work, String phone, String image, String description) {
+	public Contact(String name, String secondName, String work, String phone, String image, String description) {
 		this.cId = cId;
 		this.name = name;
 		this.secondName = secondName;
