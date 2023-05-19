@@ -5,13 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.poc.SmartContactManager.repository.ContactRepository;
 import com.poc.SmartContactManager.entity.Contact;
 
 @Service
 public class ContactServiceImpl implements ContactService {
 	
 	@Autowired
-	private com.poc.SmartContactManager.repository.ContactRepository contactRepo;
+	private ContactRepository contactRepo;
 	
 	
 	public void save(Contact contact) {
