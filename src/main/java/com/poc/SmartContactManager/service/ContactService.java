@@ -6,7 +6,7 @@ import com.poc.SmartContactManager.entity.Contact;
 
 public interface ContactService {
 	
-	void save (Contact contact);
+	void save(Contact contact);
 	
 	List<Contact> getContacts();
 	
