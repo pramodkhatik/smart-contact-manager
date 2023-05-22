@@ -36,20 +36,21 @@ public class Contact {
 	@Column(name = "description", length = 500)
 	private String description;
 	
-	@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@ManyToOne
 	private User user;
 	
 	public Contact(){
 		
 	}
 	
-	public Contact(String name, String secondName, String work, String phone, String image, String description) {
+	public Contact(String name, String secondName, String work, String phone, String image, String description,User user) {
 		this.name = name;
 		this.secondName = secondName;
 		this.work = work;
 		this.phone = phone;
 		this.image = image;
 		this.description = description;
+		this.user = user;
 	}
 	
 	public int getContactId() {
