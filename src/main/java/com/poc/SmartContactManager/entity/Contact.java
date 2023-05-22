@@ -10,11 +10,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "CONTACT")
 public class Contact {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name = "cId")
-	private int cId;
+	@Column(name = "contactId")
+	private int contactId;
 	
 	@Column(name = "name")
 	private String name; 
@@ -31,7 +31,7 @@ public class Contact {
 	@Column(name = "image")
 	private String image;
 
-	@Column(name = "description")
+	@Column(name = "description", length = 500)
 	private String description;
 	
 	public Contact(){
@@ -39,7 +39,6 @@ public class Contact {
 	}
 	
 	public Contact(String name, String secondName, String work, String phone, String image, String description) {
-		this.cId = cId;
 		this.name = name;
 		this.secondName = secondName;
 		this.work = work;
@@ -48,12 +47,12 @@ public class Contact {
 		this.description = description;
 	}
 	
-	public int getcId() {
-		return cId;
+	public int getContactId() {
+		return contactId;
 	}
 
-	public void setcId(int cId) {
-		this.cId = cId;
+	public void setContactId(int contactId) {
+		this.contactId = contactId;
 	}
 
 	public String getname() {
@@ -106,7 +105,7 @@ public class Contact {
 	
 	@Override
 	public String toString() {
-		return "Contacts [cId=" + cId + ", Name=" + name + ", secondName=" + secondName + ", work=" + work + ", phone=" + phone
+		return "Contacts [contactId=" + contactId + ", Name=" + name + ", secondName=" + secondName + ", work=" + work + ", phone=" + phone
 				+ ", image=" + image + ", description=" + description + ", ]";
 
 	}

@@ -10,11 +10,11 @@ public interface ContactService {
 	
 	List<Contact> getContacts();
 	
-	Contact getContact(String Name);
+	Contact getContact(int contactId);
 	
 	Contact updateContact(Contact contact);
 	
-	void deleteContact(String Name);
+	void deleteContact(int contactId);
 	
 	
 	

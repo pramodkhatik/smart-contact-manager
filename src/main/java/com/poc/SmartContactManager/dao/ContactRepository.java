@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.poc.SmartContactManager.entity.Contact;
 
 @Repository
-public interface ContactRepository extends JpaRepository<Contact, String> {
+public interface ContactRepository extends JpaRepository<Contact, Integer> {
 
 }

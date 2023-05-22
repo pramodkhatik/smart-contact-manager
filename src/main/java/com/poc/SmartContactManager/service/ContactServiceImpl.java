@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.poc.SmartContactManager.repository.ContactRepository;
+import com.poc.SmartContactManager.dao.ContactRepository;
 import com.poc.SmartContactManager.entity.Contact;
 
 @Service
@@ -26,9 +26,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public Contact getContact(String Name) {
+	public Contact getContact(int contactId) {
 		// TODO Auto-generated method stub
-		return contactRepo.findById(Name).orElse(null);
+		return contactRepo.findById(contactId).orElse(null);
 	}
 
 	@Override
@@ -38,9 +38,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public void deleteContact(String Name) {
+	public void deleteContact(int contactId) {
 		// TODO Auto-generated method stub
-		contactRepo.deleteById(Name);
+		contactRepo.deleteById(contactId);;
 	}
 
 }
