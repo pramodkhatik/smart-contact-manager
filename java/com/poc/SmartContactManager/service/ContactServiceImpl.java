@@ -43,10 +43,4 @@ public class ContactServiceImpl implements ContactService {
 		contactRepo.deleteById(contactId);;
 	}
 
-	@Override
-	public List<Contact> getContactByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return contactRepo.getByUserId(userId);
-	}
-
 }

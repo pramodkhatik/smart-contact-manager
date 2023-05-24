@@ -8,9 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
 @Table(name = "CONTACT")
 public class Contact {
@@ -111,12 +108,10 @@ public class Contact {
 		this.name = name;
 	}
 
-	@JsonIgnore
 	public User getUser() {
 		return user;
 	}
 
-	@JsonProperty
 	public void setUser(User user) {
 		this.user = user;
 	}

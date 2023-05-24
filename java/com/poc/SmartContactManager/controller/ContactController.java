@@ -51,12 +51,4 @@ public class ContactController {
 		contactService.deleteContact(contactId);
 		return ResponseEntity.ok("Contact Deleted with Contact Id : "+contactId);
 	}
-	
-	@GetMapping("/contacts/users/{userId}")
-	public ResponseEntity<List<Contact>> getContactsByUserId(@PathVariable int userId){
-		
-		List<Contact> contactList = contactService.getContactByUserId(userId);
-		
-		return ResponseEntity.ok(contactList);
-	}
 }

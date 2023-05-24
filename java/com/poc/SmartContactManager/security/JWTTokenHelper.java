@@ -1,5 +1,6 @@
 package com.poc.SmartContactManager.security;
 
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
