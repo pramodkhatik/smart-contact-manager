@@ -6,7 +6,7 @@ import com.poc.SmartContactManager.entity.User;
 
 public interface UserService {
 
-	void save(User user);
+	User save(User user);
 	 
 	 List<User> getUsers();
 	 
