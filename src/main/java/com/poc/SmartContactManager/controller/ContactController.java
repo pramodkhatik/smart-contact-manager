@@ -1,9 +1,16 @@
 package com.poc.SmartContactManager.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +42,26 @@ public class ContactController {
 	}
 	
 	@PostMapping("/contacts")
-	public ResponseEntity<Contact> saveContact(@RequestBody Contact contact){
+	public ResponseEntity<?> saveContact(@Valid @RequestBody Contact contact, BindingResult bindingResult){
+		if(bindingResult.hasFieldErrors()) {
+			List<FieldError> errors=bindingResult.getFieldErrors();
+			List<String> errorMessage = new ArrayList<>();
+			
+			for(FieldError error:errors) {
+				errorMessage.add(error.getDefaultMessage());
+			}
+			
+			Map<String,Object> errorResponse = new HashMap<>();
+			errorResponse.put("errors", errorMessage);
+			return ResponseEntity.badRequest().body(errorResponse);
+		}
+		
 		contactService.save(contact);
 		return ResponseEntity.ok(contact);
 	}
 	
 	@PutMapping("/contacts")
-	public ResponseEntity<Contact> updateContact(@RequestBody Contact contact){
+	public ResponseEntity<Contact> updateContact(@Valid @RequestBody Contact contact){
 		contactService.updateContact(contact);
 		return ResponseEntity.ok(contact);
 	}

@@ -1,5 +1,6 @@
 package com.poc.SmartContactManager.entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,17 +26,28 @@ public class Contact {
 	@Column(name = "contactId")
 	private int contactId;
 	
+	@NotEmpty(message="name cannot be null.")
+	@Size(min = 4 , max=30, message="Min size of the name should be more than 4 letters")
 	@Column(name = "name")
 	private String name; 
 	
+	@Size(min = 2 , max=10, message="Min size of the Secondname should be more than 2 letters")
 	@Column(name = "secondName")
 	private String secondName;
 	
+	@NotEmpty(message = "work field cannot be empty")
 	@Column(name = "work")
 	private String work;
 	
+	@NotEmpty(message = "Phone number cannot be empty")
+	@Pattern(regexp ="^\\d{10}$")
 	@Column(name = "phone")
 	private String phone;
+	
+	@Email
+	@NotBlank
+	@Column(name="email")
+	private String email;
 	
 	@Column(name = "image")
 	private String image;
@@ -45,11 +62,12 @@ public class Contact {
 		
 	}
 	
-	public Contact(String name, String secondName, String work, String phone, String image, String description,User user) {
+	public Contact(String name, String secondName, String work, String phone, String email,String image, String description,User user) {
 		this.name = name;
 		this.secondName = secondName;
 		this.work = work;
 		this.phone = phone;
+		this.email=email;
 		this.image = image;
 		this.description = description;
 		this.user = user;
@@ -85,6 +103,13 @@ public class Contact {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getImage() {
@@ -124,7 +149,7 @@ public class Contact {
 	@Override
 	public String toString() {
 		return "Contacts [contactId=" + contactId + ", Name=" + name + ", secondName=" + secondName + ", work=" + work + ", phone=" + phone
-				+ ", image=" + image + ", description=" + description + ", ]";
+				+ ",email="+email+", image=" + image + ", description=" + description + ", ]";
 
 	}
 
