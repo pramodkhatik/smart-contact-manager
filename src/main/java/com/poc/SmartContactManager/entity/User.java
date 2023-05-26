@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -173,7 +174,11 @@ public class User implements UserDetails{
 	}
 	
 	
-	
+	@PrePersist
+	void defaultImage() {
+		if(this.imageUrl==null || this.imageUrl=="")
+			this.imageUrl="default.png";
+	}
 	
 	
 }
