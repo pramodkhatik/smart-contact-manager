@@ -2,7 +2,9 @@ package com.poc.SmartContactManager.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -52,9 +54,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public ResponseEntity<User> saveUser(@RequestBody User user){
+	public ResponseEntity<Map<String,Boolean>> saveUser(@RequestBody User user){
 		userService.save(user);
-		return ResponseEntity.ok(user);
+		Map<String, Boolean> response = Collections.singletonMap("registered", false);
+		return ResponseEntity.ok(response);
 	}
 	
 	@PutMapping("/users")

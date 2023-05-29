@@ -2,6 +2,7 @@ package com.poc.SmartContactManager.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poc.SmartContactManager.entity.JWTAuthRequest;
 import com.poc.SmartContactManager.entity.JWTAuthResponse;
 import com.poc.SmartContactManager.entity.User;
+import com.poc.SmartContactManager.exception.EmailAlredayExistsException;
 import com.poc.SmartContactManager.security.JWTTokenHelper;
 import com.poc.SmartContactManager.service.UserService;
 
@@ -54,10 +57,26 @@ public class FormController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<User> registerUser(@RequestBody User user) {	
-		User tempUser = userService.save(user);
-		return new ResponseEntity<User>(tempUser,HttpStatus.CREATED);
+		
+		if(userService.emailExists(user.getEmail())) {
+			throw new EmailAlredayExistsException("Email alreday exists");
+		}
+		
+		try {
+			User tempUser = userService.save(user);
+			return new ResponseEntity<User>(tempUser,HttpStatus.CREATED);
+			
+		}catch(DataIntegrityViolationException ex) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+		
 	}
 	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+	public ResponseEntity<String> handleDataIntegrityViolationException(DataIntegrityViolationException ex){
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+	}
+
 	private void authenticate(String username,String password) throws Exception{
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
 		try {

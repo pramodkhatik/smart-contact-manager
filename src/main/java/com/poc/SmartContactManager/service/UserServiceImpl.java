@@ -1,6 +1,7 @@
 package com.poc.SmartContactManager.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -52,6 +53,14 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(int userId) {
 		// TODO Auto-generated method stub
 		userRepo.deleteById(userId);
+	}
+
+
+	@Override
+	public boolean emailExists(String email) {
+	
+		Optional<User> user = userRepo.findByEmail(email);
+		return user!=null;
 	}
 	
 	
