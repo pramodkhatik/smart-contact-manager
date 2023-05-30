@@ -53,7 +53,7 @@ public class FormController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<User> registerUser(@RequestBody User user) {	
+	public ResponseEntity<User> registerUser(@RequestBody User user){	
 		User tempUser = userService.save(user);
 		return new ResponseEntity<User>(tempUser,HttpStatus.CREATED);
 	}

@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -53,6 +54,7 @@ public class User implements UserDetails{
 	@Column(name="enabled")
 	private Boolean enabled;
 	
+	@Lob
 	@Column(name="imageUrl")
 	private String imageUrl;
 	

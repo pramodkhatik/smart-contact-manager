@@ -71,7 +71,7 @@ public class UserController {
 	
 	@PostMapping("/users/image/upload/{userId}")
 	public ResponseEntity<User> updloadImage(@RequestParam MultipartFile image,@PathVariable int userId) throws IOException{
-		String imageName = fileService.uploadImage(path, image);
+		String imageName = fileService.uploadImage(userId,path, image);
 		User user = userService.getUser(userId);
 		user.setImageUrl(imageName);
 		userService.save(user);
@@ -79,8 +79,9 @@ public class UserController {
 		return ResponseEntity.ok(user);
 	}
 	
-	@GetMapping(path="/users/image/{imageName}",produces = MediaType.IMAGE_JPEG_VALUE)
-	public void downloadImage(@PathVariable String imageName,HttpServletResponse response) throws IOException {
+	@GetMapping(path="/users/image/{userId}",produces = MediaType.IMAGE_JPEG_VALUE)
+	public void downloadImage(@PathVariable int userId,HttpServletResponse response) throws IOException {
+		String imageName = userService.getUser(userId).getImageUrl();
 		InputStream resource = fileService.getResource(path, imageName);
 		response.setContentType(MediaType.IMAGE_JPEG_VALUE);
 		StreamUtils.copy(resource, response.getOutputStream());
