@@ -21,6 +21,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.poc.SmartContactManager.security.CustomUserDetailService;
@@ -107,4 +109,8 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
+	@Bean
+	public MultipartResolver multipartResolver() {
+		return new StandardServletMultipartResolver();
+	}
 }

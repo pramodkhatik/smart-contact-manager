@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 	public boolean emailExists(String email) {
 	
 		Optional<User> user = userRepo.findByEmail(email);
-		return user!=null;
+		return user==null;
 	}
 	
 	
