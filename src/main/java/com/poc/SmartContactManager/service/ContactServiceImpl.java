@@ -21,31 +21,31 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public List<Contact> getContacts() {
-		// TODO Auto-generated method stub
+		
 		return contactRepo.findAll();
 	}
 
 	@Override
 	public Contact getContact(int contactId) {
-		// TODO Auto-generated method stub
+		
 		return contactRepo.findById(contactId).orElse(null);
 	}
 
 	@Override
 	public Contact updateContact(Contact contact) {
-		// TODO Auto-generated method stub
+		
 		return contactRepo.save(contact);
 	}
 
 	@Override
 	public void deleteContact(int contactId) {
-		// TODO Auto-generated method stub
+		
 		contactRepo.deleteById(contactId);;
 	}
 
 	@Override
 	public List<Contact> getContactByUserId(int userId) {
-		// TODO Auto-generated method stub
+
 		return contactRepo.getByUserId(userId);
 	}
 
