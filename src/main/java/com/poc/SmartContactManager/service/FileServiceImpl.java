@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +18,8 @@ public class FileServiceImpl implements FileService {
 
 	@Override
 	public String uploadImage(int id,String path, MultipartFile file) throws IOException {
-		String name = id+"_"+file.getOriginalFilename();
+		Random rand = new Random();
+		String name = id+"_"+"_"+rand.nextInt(100000)+file.getOriginalFilename();
 		
 		String filePath = path + File.separator +name;
 		System.out.println(filePath);
