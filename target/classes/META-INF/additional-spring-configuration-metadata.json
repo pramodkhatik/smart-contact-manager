@@ -1,5 +1,12 @@
-{"properties": [{
-  "name": "project.image",
-  "type": "java.lang.String",
-  "description": "Image path"
-}]}
+{"properties": [
+  {
+    "name": "project.image",
+    "type": "java.lang.String",
+    "description": "Image path"
+  },
+  {
+    "name": "contact.image",
+    "type": "java.lang.String",
+    "description": "Contact Image path"
+  }
+]}

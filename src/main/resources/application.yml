@@ -20,3 +20,6 @@ logging:
     
 project:
   image: images/
+
+contact:
+  image: images/contact/

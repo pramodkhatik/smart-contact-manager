@@ -16,8 +16,8 @@ public class FileServiceImpl implements FileService {
 	
 
 	@Override
-	public String uploadImage(int userId,String path, MultipartFile file) throws IOException {
-		String name = userId+"_"+file.getOriginalFilename();
+	public String uploadImage(int id,String path, MultipartFile file) throws IOException {
+		String name = id+"_"+file.getOriginalFilename();
 		
 		String filePath = path + File.separator +name;
 		System.out.println(filePath);

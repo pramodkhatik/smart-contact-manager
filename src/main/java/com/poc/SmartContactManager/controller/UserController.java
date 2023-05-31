@@ -54,7 +54,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public ResponseEntity<Map<String,Boolean>> saveUser(@RequestBody User user){
+	public ResponseEntity<Map<String,Boolean>> saveUser(@RequestBody User user) throws IOException{
 		userService.save(user);
 		Map<String, Boolean> response = Collections.singletonMap("registered", false);
 		return ResponseEntity.ok(response);
@@ -78,7 +78,6 @@ public class UserController {
 		User user = userService.getUser(userId);
 		user.setImageUrl(imageName);
 		userService.save(user);
-//		System.out.println(user.toString());
 		return ResponseEntity.ok(user);
 	}
 	
