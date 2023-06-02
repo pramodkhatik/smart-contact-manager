@@ -26,26 +26,26 @@ public class Contact {
 	@Column(name = "contactId")
 	private int contactId;
 	
-	@NotEmpty(message="name cannot be null.")
-	@Size(min = 4 , max=30, message="Min size of the name should be more than 4 letters")
+	
 	@Column(name = "name")
 	private String name; 
 	
-	@Size(min = 2 , max=10, message="Min size of the Secondname should be more than 2 letters")
+	
 	@Column(name = "secondName")
 	private String secondName;
 	
-	@NotEmpty(message = "work field cannot be empty")
+	
 	@Column(name = "work")
 	private String work;
 	
-	@NotEmpty(message = "Phone number cannot be empty")
-	@Pattern(regexp ="^\\d{10}$")
+	@Column(name = "designation")
+	private String designation;
+	
+	
 	@Column(name = "phone")
 	private String phone;
 	
-	@Email
-	@NotBlank
+	
 	@Column(name="email")
 	private String email;
 	
@@ -62,10 +62,11 @@ public class Contact {
 		
 	}
 	
-	public Contact(String name, String secondName, String work, String phone, String email,String image, String description,User user) {
+	public Contact(String name, String secondName, String work,String designation, String phone, String email,String image, String description,User user) {
 		this.name = name;
 		this.secondName = secondName;
 		this.work = work;
+		this.designation = designation;
 		this.phone = phone;
 		this.email=email;
 		this.image = image;
@@ -135,6 +136,15 @@ public class Contact {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
 
 	@JsonIgnore
 	public User getUser() {
@@ -148,7 +158,7 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contacts [contactId=" + contactId + ", Name=" + name + ", secondName=" + secondName + ", work=" + work + ", phone=" + phone
+		return "Contacts [contactId=" + contactId + ", Name=" + name + ", secondName=" + secondName + ", work=" + work + ", designation=" + designation +", phone=" + phone
 				+ ",email="+email+", image=" + image + ", description=" + description + ", ]";
 
 	}
