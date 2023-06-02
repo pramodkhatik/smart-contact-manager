@@ -146,7 +146,7 @@ public class Contact {
 		this.designation = designation;
 	}
 
-	@JsonIgnore
+	@JsonProperty
 	public User getUser() {
 		return user;
 	}
