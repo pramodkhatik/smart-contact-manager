@@ -145,6 +145,7 @@ public class User implements UserDetails{
 	}
 
 	@Override
+	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<SimpleGrantedAuthority> authorities=roles.stream().map((role) -> new SimpleGrantedAuthority(role.getRole())).toList();
 		return authorities;
@@ -156,21 +157,25 @@ public class User implements UserDetails{
 	}
 
 	@Override
+	@JsonIgnore
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
 	@Override
+	@JsonIgnore
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
 	@Override
+	@JsonIgnore
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
 	@Override
+	@JsonIgnore
 	public boolean isEnabled() {
 		return true;
 	}
