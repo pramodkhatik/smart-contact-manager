@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poc.SmartContactManager.entity.JWTAuthRequest;
 import com.poc.SmartContactManager.entity.JWTAuthResponse;
 import com.poc.SmartContactManager.entity.User;
-import com.poc.SmartContactManager.exception.EmailAlredayExistsException;
+import com.poc.SmartContactManager.exception.EmailAlreadyExistsException;
 import com.poc.SmartContactManager.security.JWTTokenHelper;
 import com.poc.SmartContactManager.service.UserService;
 
@@ -58,8 +58,9 @@ public class FormController {
 	@PostMapping("/register")
 	public ResponseEntity<User> registerUser(@RequestBody User user) {	
 		
+		System.out.println(userService.emailExists(user.getEmail()));
 		if(userService.emailExists(user.getEmail())) {
-			throw new EmailAlredayExistsException("Email alreday exists");
+			throw new EmailAlreadyExistsException("Email alreday exists");
 		}
 		
 		try {
