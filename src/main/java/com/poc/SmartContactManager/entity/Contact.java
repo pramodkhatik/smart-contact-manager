@@ -58,6 +58,8 @@ public class Contact {
 	@ManyToOne
 	private User user;
 	
+	private String countryExtension;
+	
 	public Contact(){
 		
 	}
@@ -72,6 +74,7 @@ public class Contact {
 		this.image = image;
 		this.description = description;
 		this.user = user;
+		this.countryExtension= countryExtension;
 	}
 	
 	public int getContactId() {
@@ -145,6 +148,15 @@ public class Contact {
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
+	public String getCountryExtension() {
+	    return countryExtension;
+	}
+
+	public void setCountryExtension(String countryExtension) {
+	    this.countryExtension = countryExtension;
+	}
+
+
 
 	@JsonProperty
 	public User getUser() {
@@ -159,7 +171,7 @@ public class Contact {
 	@Override
 	public String toString() {
 		return "Contacts [contactId=" + contactId + ", Name=" + name + ", secondName=" + secondName + ", work=" + work + ", designation=" + designation +", phone=" + phone
-				+ ",email="+email+", image=" + image + ", description=" + description + ", ]";
+				+ ",email="+email+", image=" + image + ", description=" + description + ",countryExtension=" + countryExtension + "]";
 
 	}
 
