@@ -20,14 +20,15 @@ COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
 # Copy the application source code
-COPY src ./src
-COPY . .
+# COPY src ./src
 
 # Build the application
 RUN mvn clean package
 
 #Copy jar
 COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
+
+COPY . .
 
 # Expose the default Spring Boot port
 EXPOSE 8081
