@@ -28,7 +28,7 @@ RUN mvn clean package
 #Copy jar
 COPY /target/SmartContactManager*.jar /app/SmartContactManager.jar
 
-COPY . /app
+# COPY . /app
 
 # Expose the default Spring Boot port
 EXPOSE 8081
