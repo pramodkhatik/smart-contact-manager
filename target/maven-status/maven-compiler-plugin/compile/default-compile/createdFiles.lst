@@ -17,6 +17,9 @@ com\poc\SmartContactManager\dao\UserRepository.class
 com\poc\SmartContactManager\service\ContactServiceImpl.class
 com\poc\SmartContactManager\entity\Contact.class
 com\poc\SmartContactManager\controller\FormController.class
+com\poc\SmartContactManager\service\FileService.class
 com\poc\SmartContactManager\entity\JWTAuthResponse.class
+com\poc\SmartContactManager\exception\EmailAlreadyExistsException.class
+com\poc\SmartContactManager\service\FileServiceImpl.class
 com\poc\SmartContactManager\security\CustomUserDetailService.class
 com\poc\SmartContactManager\security\JWTTokenHelper.class
