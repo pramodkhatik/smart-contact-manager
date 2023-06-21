@@ -26,7 +26,7 @@ RUN mvn dependency:go-offline -B
 RUN mvn clean package
 
 #Copy jar
-COPY  --from=builder /target/SmartContactManager*.jar /app/SmartContactManager.jar
+COPY  --from=builder /target/SmartContactManager*.jar .
 
 COPY . .
 
