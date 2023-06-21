@@ -26,7 +26,7 @@ RUN mvn dependency:go-offline -B
 RUN mvn clean package
 
 #Copy jar
-COPY /target/SmartContactManager*.jar ./SmartContactManager.jar
+COPY /target/SmartContactManager*.jar .
 
 COPY . /app
 
@@ -34,4 +34,4 @@ COPY . /app
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "/app/SmartContactManager.jar"]
+CMD ["java", "-jar", "/app/SmartContactManager-0.0.1-SNAPSHOT.jar"]
