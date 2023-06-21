@@ -16,7 +16,7 @@ WORKDIR /app
 # Copy the Maven project file
 COPY pom.xml .
 
-# Download the project dependencies
+[I# Download the project dependencies
 RUN mvn dependency:go-offline -B
 
 # Copy the application source code
@@ -26,7 +26,7 @@ RUN mvn dependency:go-offline -B
 RUN mvn clean package
 
 #Copy jar
-COPY /target/SmartContactManager*.jar /app/SmartContactManager.jar
+ADD /target/SmartContactManager*.jar /app/SmartContactManager.jar
 
 # COPY . /app
 
