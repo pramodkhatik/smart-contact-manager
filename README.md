@@ -1,1 +1,1 @@
-# smart-contact-manager application
+# smart-contact-manager
