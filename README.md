@@ -1,1 +1,1 @@
-# smart-contact-manager app
+# smart-contact-manager pipeline app
