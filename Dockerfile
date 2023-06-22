@@ -30,7 +30,7 @@ RUN chmod +rwx target/SmartContactManager*.jar
 #Copy jar
 COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
 
-RUN chmod +r /app/SmartContactManager.jar
+RUN chmod +rwx /app/SmartContactManager.jar
 
 
 # COPY . /app
