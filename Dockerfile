@@ -25,7 +25,7 @@ RUN mvn dependency:go-offline -B
 # Build the application
 RUN mvn clean package
 
-RUN chmod +r target/SmartContactManager*.jar
+RUN chmod +rwx target/SmartContactManager*.jar
 
 #Copy jar
 COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
