@@ -30,7 +30,7 @@ RUN mvn clean package
 #Copy jar
 COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
 
-RUN chmod +rwx /app/SmartContactManager.jar
+# RUN chmod +rwx /app/SmartContactManager.jar
 
 
 # COPY . /app
