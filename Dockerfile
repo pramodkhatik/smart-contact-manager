@@ -28,7 +28,7 @@ RUN mvn clean package
 # RUN chmod +rwx target/SmartContactManager*.jar
 
 #Copy jar
-# COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
+COPY target/SmartContactManager*.jar /app/smartcontactmanager.jar
 
 # RUN chmod +rwx /app/SmartContactManager.jar
 
@@ -39,4 +39,4 @@ RUN mvn clean package
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "/target/SmartContactManager-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", " /app/smartcontactmanager.jar"]
