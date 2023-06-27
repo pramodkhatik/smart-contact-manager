@@ -28,7 +28,7 @@ RUN mvn clean package -DskipTests
 # RUN chmod +rwx target/SmartContactManager*.jar
 
 #Copy jar
-COPY /app/target/SmartContactManager*.jar /app/smartcontactmanager.jar
+#COPY /app/target/SmartContactManager*.jar /app/smartcontactmanager.jar
 
 # RUN chmod +rwx /app/SmartContactManager.jar
 
