@@ -38,4 +38,4 @@ RUN mvn clean package -DskipTests
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "/app/smartcontactmanager.jar"]
+CMD ["java", "-jar", "/target/SmartContactManager-0.0.1-SNAPSHOT.jar"]
