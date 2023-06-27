@@ -17,10 +17,10 @@ WORKDIR /app
 COPY pom.xml .
 
 # Download the project dependencies
-RUN mvn dependency:go-offline -B
+#RUN mvn dependency:go-offline -B
 
 # Copy the application source code
- COPY src /app/src
+COPY src /app/src
 
 # Build the application
 RUN mvn clean package
@@ -32,11 +32,10 @@ COPY target/SmartContactManager*.jar /app/smartcontactmanager.jar
 
 # RUN chmod +rwx /app/SmartContactManager.jar
 
-
 # COPY . /app
 
 # Expose the default Spring Boot port
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", " /app/smartcontactmanager.jar"]
+CMD ["java", "-jar", "/app/smartcontactmanager.jar"]
