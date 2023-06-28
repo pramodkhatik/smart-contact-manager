@@ -9,7 +9,9 @@ ENV PATH ${MAVEN_HOME}/bin:${PATH}
 RUN apt-get update && \
     apt-get install -y curl && \
     curl -fsSL https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xzf - -C /usr/lib && \
-    ln -s /usr/lib/apache-maven-${MAVEN_VERSION} ${MAVEN_HOME} \ && mvn --version
+    ln -s /usr/lib/apache-maven-${MAVEN_VERSION} ${MAVEN_HOME}
+
+RUN mvn --version
 
 
 # Set up the working directory
