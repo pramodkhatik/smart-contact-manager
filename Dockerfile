@@ -13,7 +13,6 @@ RUN apt-get update && \
 
 RUN mvn --version
 
-
 # Set up the working directory
 WORKDIR /app
 
@@ -32,7 +31,7 @@ RUN mvn clean package -DskipTests
 # RUN chmod +rwx target/SmartContactManager*.jar
 
 #Copy jar
-#COPY /target/SmartContactManager-0.0.1-SNAPSHOT.jar /app/SmartContactManager-0.0.1-SNAPSHOT.jar
+COPY target/SmartContactManager*.jar /SmartContactManager.jar
 
 # RUN chmod +rwx /app/SmartContactManager.jar
 
@@ -42,4 +41,4 @@ RUN mvn clean package -DskipTests
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "/target/SmartContactManager-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "SmartContactManager.jar"]
