@@ -1,5 +1,7 @@
 FROM openjdk:17-jdk-slim
 
+RUN java -version
+
 # Install Maven
 ENV MAVEN_VERSION 3.8.8
 ENV MAVEN_HOME /usr/lib/maven
@@ -7,7 +9,7 @@ ENV PATH ${MAVEN_HOME}/bin:${PATH}
 RUN apt-get update && \
     apt-get install -y curl && \
     curl -fsSL https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xzf - -C /usr/lib && \
-    ln -s /usr/lib/apache-maven-${MAVEN_VERSION} ${MAVEN_HOME}
+    ln -s /usr/lib/apache-maven-${MAVEN_VERSION} ${MAVEN_HOME} \ && mvn --version
 
 
 # Set up the working directory
@@ -28,7 +30,7 @@ RUN mvn clean package -DskipTests
 # RUN chmod +rwx target/SmartContactManager*.jar
 
 #Copy jar
-COPY /target/SmartContactManager-0.0.1-SNAPSHOT.jar /app/SmartContactManager-0.0.1-SNAPSHOT.jar
+#COPY /target/SmartContactManager-0.0.1-SNAPSHOT.jar /app/SmartContactManager-0.0.1-SNAPSHOT.jar
 
 # RUN chmod +rwx /app/SmartContactManager.jar
 
