@@ -28,12 +28,14 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
+RUN mvn clean install
+
 COPY . .
 
 # RUN chmod +rwx target/SmartContactManager*.jar
 
 #Copy jar
-COPY --from=maven-builder target/SmartContactManager*.jar /app/SmartContactManager.jar
+COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
 
 # RUN chmod +rwx /app/SmartContactManager.jar
 
@@ -41,4 +43,4 @@ COPY --from=maven-builder target/SmartContactManager*.jar /app/SmartContactManag
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "app/SmartContactManager.jar"]
+CMD ["java", "-jar", "/app/SmartContactManager.jar"]
