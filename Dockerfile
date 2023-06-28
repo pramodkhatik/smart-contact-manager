@@ -28,14 +28,14 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
+COPY . .
+
 # RUN chmod +rwx target/SmartContactManager*.jar
 
 #Copy jar
 COPY target/SmartContactManager*.jar /SmartContactManager.jar
 
 # RUN chmod +rwx /app/SmartContactManager.jar
-
-# COPY . /app
 
 # Expose the default Spring Boot port
 EXPOSE 8081
