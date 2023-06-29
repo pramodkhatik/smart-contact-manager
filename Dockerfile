@@ -43,4 +43,5 @@ COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "/app/SmartContactManager.jar"]
+#CMD ["java", "-jar", "/app/SmartContactManager.jar"]
+CMD ["sleep","3600"]
