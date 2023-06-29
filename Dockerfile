@@ -34,14 +34,14 @@ COPY . .
 
 # RUN chmod +rwx target/SmartContactManager*.jar
 
-#Copy jar
-COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
-
+# Copy jar
+# COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
+RUN cp /app/target/SmartContactManager*.jar /app/SmartContactManager.jar
 # RUN chmod +rwx /app/SmartContactManager.jar
 
 # Expose the default Spring Boot port
 EXPOSE 8081
 
 # Run the Spring Boot application
-#CMD ["java", "-jar", "/app/SmartContactManager.jar"]
-CMD ["sleep","3600"]
+CMD ["java", "-jar", "/app/SmartContactManager.jar"]
+# CMD ["sleep","3600"]
