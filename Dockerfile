@@ -28,8 +28,6 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
-RUN mvn clean install
-
 COPY . .
 
 # RUN chmod +rwx target/SmartContactManager*.jar
