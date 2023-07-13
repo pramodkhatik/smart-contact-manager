@@ -1,13 +1,17 @@
-# Stage 1: Build Stage
-FROM openjdk:17-jdk-alpine AS build
+FROM openjdk:17-jdk-slim
+
+RUN java -version
 
 # Install Maven
 ENV MAVEN_VERSION 3.8.8
 ENV MAVEN_HOME /usr/lib/maven
 ENV PATH ${MAVEN_HOME}/bin:${PATH}
-RUN apk add --no-cache curl && \
+RUN apt-get update && \
+    apt-get install -y curl && \
     curl -fsSL https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar xzf - -C /usr/lib && \
     ln -s /usr/lib/apache-maven-${MAVEN_VERSION} ${MAVEN_HOME}
+
+RUN mvn --version
 
 # Set up the working directory
 WORKDIR /app
@@ -24,17 +28,18 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Stage 2: Runtime Stage
-FROM openjdk:17-jdk-alpine
+COPY . .
 
-# Set up the working directory
-WORKDIR /app
+# RUN chmod +rwx target/SmartContactManager*.jar
 
-# Copy the built JAR file from the build stage
-COPY --from=build /app/target/SmartContactManager*.jar ./SmartContactManager.jar
+# Copy jar
+# COPY target/SmartContactManager*.jar /app/SmartContactManager.jar
+RUN cp /app/target/SmartContactManager*.jar /app/SmartContactManager.jar
+# RUN chmod +rwx /app/SmartContactManager.jar
 
 # Expose the default Spring Boot port
 EXPOSE 8081
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "SmartContactManager.jar"]
+CMD ["java", "-jar", "/app/SmartContactManager.jar"]
+# CMD ["sleep","3600"]
