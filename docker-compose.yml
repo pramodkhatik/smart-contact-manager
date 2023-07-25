@@ -2,12 +2,14 @@ version: '3.8'
 services:
   frontend:
     image: pramodkhatik/scm-frontend-image
+    container_name: scm-frontend-cntr
     ports:
       - 5173:5173
     networks:
       - scmnw
   backend:
     image: pramodkhatik/scm-backend-image
+    container_name: scm-backend-cntr
     ports:
       - 8081:8081
     networks:
@@ -21,7 +23,7 @@ services:
       - DB_USER=root
       - DB_PASSWORD=root
   db:
-    image: mysql:latest
+    image: mysql:8.0.29
     container_name: mysql-container
     ports:
       - 3306:3306
