@@ -29,8 +29,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=smartcontactmanager
-	volumes:
-	  - mysqldb:/var/lib/mysql
+    volumes:
+      - mysqldb:/var/lib/mysql
 networks:
   scmnw:
 volumes:
