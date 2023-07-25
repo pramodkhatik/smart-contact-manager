@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  frontend:
+    image: pramodkhatik/scm-frontend-image
+    ports:
+      - 5173:5173
+    networks:
+      - scmnw
+  backend:
+    image: pramodkhatik/scm-backend-image
+    ports:
+      - 8081:8081
+    networks:
+      - scmnw
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=smartcontactmanager
+      - DB_USER=root
+      - DB_PASSWORD=root
+  db:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    networks:
+      - scmnw
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=smartcontactmanager
+	volumes:
+	  - mysqldb:/var/lib/mysql
+networks:
+  scmnw:
+volumes:
+  mysqldb:
