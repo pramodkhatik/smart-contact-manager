@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     environment:
-      - DB_HOST=db
+      - DB_HOST=mysql-container
       - DB_PORT=3306
       - DB_NAME=smartcontactmanager
       - DB_USER=root
